@@ -1,0 +1,24 @@
+<div class ="container">
+  <!--- om man inte är inloggad så visas detta --->
+  <div class ="boxOne" *ngIf="!userName">
+    <p>
+      Please login!
+    </p>
+    <div class="input-group mb-3">
+      <input [(ngModel)]="loggedUser" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Username...">
+    </div>
+    <div class ="btngrp">
+      <!-- Two buttons with click function and Outputs sending to dashboard  -->
+      <button (click)="login()" type="button" class="btn btn-success" routerLink='/dashboard'>Login</button>
+    </div>
+  </div>
+  <!--- om man är inloggad så ser man detta --->
+  <div class ="boxTwo" *ngIf="userName">
+    <p>
+      You're already logged in!
+    </p>
+    <button (click)="logout()" type="button" class="btn btn-success" routerLink='/'>Logout</button>
+  </div>
+
+
+</div>

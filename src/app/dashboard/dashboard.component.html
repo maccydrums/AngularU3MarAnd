@@ -1,0 +1,12 @@
+<!--- ngIf isn't necessary, since I've got my routeGuard --->
+<div class ="container" *ngIf="loggedUser;">
+  <!-- Selectors with @Input/Output() to be able to send & receive data  -->
+  <app-user-list [user]="users"></app-user-list>
+  <app-edit-users (newName)="newUser($event)" (removeName)="removeUsername($event)"></app-edit-users>
+</div>
+
+<div class ="containerTwo" *ngIf="!loggedUser;">
+  <p>
+    You must be logged in to view this content!
+  </p>
+</div>
