@@ -1,21 +1,30 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { UsersService } from '../users.service';
 
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.css']
 })
-export class UserListComponent implements OnInit {
-  //receiving our array from dashboard
+
+//renders our users we get from jsonplaceholder via our subscription on Observables, and sends a boolean till user-list-item so we can toggle the text color
+export class UserListComponent {
   @Input() user: string;
+  textColor: boolean = false;
+  users: void;
+  usersFailed: string;
 
-  constructor() { }
-
-  ngOnInit() {
+  //recieves our users from our subscription on Observables
+  constructor(private UsersService:UsersService) {
+      this.UsersService.getUsers().subscribe(
+          (response) => this.users = response,
+          (error) => this.jsonFailed(error));
   }
 
-  //variable with a boolean property so we can change the text color
-  textColor: boolean = false;
+  //recieves error.status if we cant get our users from jsonplaceholder
+  jsonFailed(error: any): void {
+    this.usersFailed = error.status;
+  }
 
   //function so we can toggle between textColor = true/false
   toggle() {

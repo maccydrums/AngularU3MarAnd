@@ -19,12 +19,12 @@ export class DashboardComponent {
   }
 
   //adding a new user to our array with parameters/data from edit-users (@Output() newName = new EventEmitter<string>();)
-  newUser(user){
+  newUser(user: string): void{
     this.users.push(user);
   }
 
   //removes the last user from our array with ---.--- ^
-  removeUsername(user) {
+  removeUsername(): void {
     this.users.pop();
   }
 

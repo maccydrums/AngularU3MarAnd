@@ -1,4 +1,4 @@
 <!-- displays each user from our array through *ngFor-loop + [style.color] that checks what state textColor is & toggling between two different colors. +  -->
 <li class="list-group-item">
-  <a [routerLink]="['/user', user]" [style.color]="textColor ? '#ff0000' : '#000000'">{{user}}</a>
+  <a [routerLink]="['/user', users.id]" [style.color]="textColor ? '#ff0000' : '#000000'">{{users.name}}</a>
   </li>

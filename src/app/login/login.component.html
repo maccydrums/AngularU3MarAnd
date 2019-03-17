@@ -1,16 +1,33 @@
 <div class ="container">
-  <!--- om man inte är inloggad så visas detta --->
-  <div class ="boxOne" *ngIf="!userName">
-    <p>
-      Please login!
-    </p>
-    <div class="input-group mb-3">
-      <input [(ngModel)]="loggedUser" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Username...">
-    </div>
-    <div class ="btngrp">
-      <!-- Two buttons with click function and Outputs sending to dashboard  -->
-      <button (click)="login()" type="button" class="btn btn-success" routerLink='/dashboard'>Login</button>
-    </div>
+  <div class ="boxOne" *ngIf="!userName && regForm">
+    <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+      <label for="email">Username</label>
+      <input
+      class="form-control"
+      type="email"
+      id="email"
+      required
+      [(ngModel)]="model.email" name="email" [email]="true"
+      #email="ngModel">
+      <div [hidden]="email.valid || email.untouched" class="alert alert-danger">
+        Type in a correct email!
+      </div>
+      <label for="password">Password</label>
+      <input
+      class="form-control"
+      type="password"
+      id="password"
+      required
+      minlength="10"
+      [(ngModel)]="model.password" name="password"
+      #password="ngModel">
+      <button class="btn btn-success" type="submit" name="button" [disabled]="!userForm.form.valid">
+        Login
+      </button>
+      <button (click)="toggleForms()" class="btn btn-primary" type="button">
+        Create new user
+      </button>
+    </form>
   </div>
   <!--- om man är inloggad så ser man detta --->
   <div class ="boxTwo" *ngIf="userName">
@@ -20,5 +37,50 @@
     <button (click)="logout()" type="button" class="btn btn-success" routerLink='/'>Logout</button>
   </div>
 
-
+  <div class ="boxOne" *ngIf="!userName && !regForm">
+    <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
+      <label for="email">Email</label>
+      <input
+      class="form-control"
+      type="email"
+      id="email"
+      required
+      [(ngModel)]="createNewUser.email" name="email" [email]="true"
+      #email="ngModel">
+      <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+        Type in a correct email!
+      </div>
+      <label for="firstName">First name</label>
+      <input
+      class="form-control"
+      type="name"
+      id="firstName"
+      required
+      [(ngModel)]="createNewUser.firstName" name="firstName"
+      #firstName="ngModel">
+      <label for="lastName">Last name</label>
+      <input
+      class="form-control"
+      type="name"
+      id="lastName"
+      required
+      [(ngModel)]="createNewUser.lastName" name="lastName"
+      #lastName="ngModel">
+      <label for="password">Password</label>
+      <input
+      class="form-control"
+      type="password"
+      id="password"
+      required
+      minlength="10"
+      [(ngModel)]="createNewUser.password" name="password"
+      #password="ngModel">
+      <button (click)="createNewUserAdmin()" class="btn btn-success" type="button" [disabled]="!registerForm.form.valid">
+        Create new user
+      </button>
+      <button (click)="toggleForms()" class="btn btn-primary" type="button">
+        Login with existing user
+      </button>
+    </form>
+  </div>
 </div>

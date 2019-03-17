@@ -1,6 +1,6 @@
 <ul class="list-group">
   <!-- using *ngFor so we can loop through the array and add each user + textColor which is for toggling the text color -->
-  <app-user-list-item *ngFor="let myUser of user" [user] = "myUser" [textColor] = "textColor"></app-user-list-item>
+  <app-user-list-item *ngFor="let user of users" [users] = "user" [textColor] = "textColor"></app-user-list-item>
 </ul>
 <!-- button with a click event that toggles the text color -->
 <button (click)="toggle()" type="button" class="btn btn-primary">Toggle</button>

@@ -1,3 +1,12 @@
-<p>
-  User: {{user}}
-  </p>
+<div class ="wrapper">
+  <div class="card" *ngIf="users">
+    <div class="card-body">
+      <h5 class="card-title">{{users.username}}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">Name: {{users.name}}</h6>
+      <p class="card-text">Email: {{users.email}}</p>
+      <p class="card-text">Street: {{users.address.street}}</p>
+      <p class="card-text">Zipcode: {{users.address.zipcode}}</p>
+      <p class="card-text">City: {{users.address.city}}</p>
+    </div>
+  </div>
+</div>

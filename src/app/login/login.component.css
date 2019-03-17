@@ -1,19 +1,30 @@
 .container {
   display: flex;
   flex-direction: column;
-  width: 400px;
-  height: 200px;
+  width: 411px;
+  min-height: 200px;
   background-color: #ebebeb;
   border-radius: 5px;
-  padding: 20px;
+  padding: 30px;
 }
 
-.container p {
-  font-size: 20px;
-  margin-bottom: 20px;
-  margin-left: 2px;
+.form-control {
+  margin-bottom: 13px;
+}
+
+.btn-primary {
+  margin-left: 10px;
+  margin-top: 5px;
 }
 
 .btn-success {
-  width: 80px;
+  margin-top: 5px;
+}
+
+.ng-valid[required] {
+  border-left: 4px solid #42A948;
+}
+
+.ng-invalid:not(Form).ng-touched:not(Form) {
+  border-left: 4px solid red;
 }

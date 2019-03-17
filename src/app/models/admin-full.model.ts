@@ -1,3 +1,4 @@
+//model for creating new users
 export class AdminFull {
 constructor(
 public firstName:string,

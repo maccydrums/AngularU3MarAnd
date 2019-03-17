@@ -5,6 +5,8 @@ import { Component } from '@angular/core';
   templateUrl: './page-not-found.component.html',
   styleUrls: ['./page-not-found.component.css']
 })
+
+//component that renders when the user enters a url that doesnt exist
 export class PageNotFoundComponent {
 
   constructor() { }

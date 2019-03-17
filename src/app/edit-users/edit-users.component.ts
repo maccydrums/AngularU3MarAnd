@@ -1,11 +1,12 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 
-
 @Component({
   selector: 'app-edit-users',
   templateUrl: './edit-users.component.html',
   styleUrls: ['./edit-users.component.css']
 })
+
+//sends Outputs to its parents (UserListComponent)
 export class EditUsersComponent {
   //setting value to a empty string
   value:string = '';
